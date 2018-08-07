@@ -15,7 +15,7 @@ $VERSION = '0.0.0';
     license=> 'MIT',
     );
 
-# generated from https://unicode.org/Public/emoji/11.0/emoji-data.txt (excluding the 'Emoji' property)
+# generated using list_emoji.py
 my @emojipoints = (
 0x00A9,
 0x00AE,
