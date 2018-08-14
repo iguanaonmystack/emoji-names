@@ -15,7 +15,8 @@ $VERSION = '0.0.0';
     license=> 'MIT',
     );
 
-# generated using list_emoji.py
+# generated from https://unicode.org/Public/emoji/11.0/emoji-data.txt
+# (excluding the 'Emoji' property)
 my @emojipoints = (
 0x00A9,
 0x00AE,
@@ -3887,7 +3888,13 @@ sub event_message ($$$) {
     foreach (@matches) {
         my $codepoint = ord decode_utf8 $_;
         if (is_emoji $codepoint) {
-            my $name = lc charnames::viacode($codepoint);
+            my $name;
+            my $charname = charnames::viacode($codepoint);
+            if ((defined $charname)) {
+                $name = lc $charname;
+            } else {
+                $name = "U+" . $codepoint;
+            }
             $msg =~ s/$_/:$name:/;
         }
     }
