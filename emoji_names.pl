@@ -3893,7 +3893,7 @@ sub event_message ($$$) {
             if ((defined $charname)) {
                 $name = lc $charname;
             } else {
-                $name = "U+" . $codepoint;
+                $name = sprintf("U+%X", $codepoint);;
             }
             $msg =~ s/$_/:$name:/;
         }
